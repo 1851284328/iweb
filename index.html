@@ -80,6 +80,10 @@
 			
 			/* 修改购物车定位方式 为下拉菜单提供定位 */
 			z-index: 1;
+		}
+		 .cart.open{ /*购物车下有“下拉菜单”样式*/
+		    line-height: 31px;
+			background: #fff;
 			border-bottom: none;
 		}
 		.cart > .fa{
@@ -101,12 +105,44 @@
 			border: 1px solid #ddd;
 			padding: 2em 3em 2em 3em;
 			width: 262px;
-			background: #fff;   /*背景默认透明*/
+			background: #fff;   /*背景默认透明*/	
+			display: none;
+		}
+		.cart-container> .dropdown.open {
+			display:block;
+		}
+		.navbar{
+			background: #57bc4c;
+			width: 100%;
+			height: 42px;
+			border-bottom: 2px solid #c1eebd;
+			line-height: 40px;
+			color: #000;
+			font-size: 1.2em;
+			list-style:none;
 			
+		}
+		
+		.navbar .menu {
+			
+			
+		}
+		.navbar .menu li{
+			/*修改列表项前的提示符号*/
+			/* list-style:disc(圆饼)  decimal (数字) circle(圆圈) lower-alpha（大写字母） upper-alpha（小写字母） upper-roman 罗马大写字母*/
+			float: left;
+			padding: 0 1.5em;
+		}
+		.navbar .menu li:hover{
+			background: #4aaf3f;
+		}
+		.navbar .menu li a{
+			color: #FFFFFF;
 		}
 	</style>
 	</head>
 	<body>
+		
 		<div class="topbar">
 			<div class="container">
 				<a href="#">
@@ -133,38 +169,57 @@
 				<!-- logo图片插入 -->
 				<img src="img/logo.png" alt="iweb LOGO">
 				<!-- 我的购物车 -->
-					<div class="cart-container">
-						<div class="cart" id="myCart">
-							<span class="fa fa-shopping-cart fa-lg"></span>
-							<span>我的购物车(<b>0</b>)</span>
-							<span class="fa fa-caret-down caret" id="caret"></span>
-							</div>
-							<div class="dropdown">
-								请登录查看你的购物车
-							</div>
-						</div>
-
-						<!-- 输入框 -->
-						<div class="search">
-							<input type="text" placeholder="课程搜索"><span class="fa fa-search fa-lg"></span>
-
-							<!-- <input type="password">-->
-							<!-- <input type="radio" > -->
-							<!-- <input type="checkbox"> -->
-							<!-- <input type="button" -->
-
-
-
-						</div>
+				<div class="cart-container" id="myCart">
+					<div class="cart" id="cart">
+						<span class="fa fa-shopping-cart fa-lg"></span>
+						<span>我的购物车(<b>0</b>)</span>
+						<span class="fa fa-caret-down caret" id="caret"></span>
 					</div>
-					<script>
-						// 鼠标悬停在myCart上后面的小三角开始旋转，离开则复原/
-						myCart.onmouseenter = () => {
-							caret.classList.add('caret-rotate')
-						}
-						myCart.onmouseleave = () => {
-							caret.classList.remove('caret-rotate')
-						}
-					</script>
+					<div class="dropdown" id="dropdown">
+						请登录查看你的购物车
+					</div>
+				</div>
+
+				<!-- 输入框 -->
+				<div class="search">
+					<input type="text" placeholder="课程搜索"><span class="fa fa-search fa-lg"></span>
+
+					<!-- <input type="password">-->
+					<!-- <input type="radio" > -->
+					<!-- <input type="checkbox"> -->
+					<!-- <input type="button" -->
+
+
+
+				</div>
+			</div>
+			<div class="navbar">
+				<div class="container">
+					<nl class="menu">
+						<li><a href="index.html">首页</a></li> 
+						<li><a href="course.HTML">全部课程</a></li>
+						<li><a href="course.html?tid=1">基础课程</a></li>
+						<li><a href="course.html?tid=2">核心课程</a></li>
+						<li><a href="course.html?tid=3">进阶课程</a></li>
+						<li><a href="teacher.html">名师堂</a></li>
+						<li><a href="school.html">校区</a></li>
+					</nl>
+					
+					
+				</div>
+			</div>
+			<script>
+				// 鼠标悬停在myCart上后面的小三角开始旋转，离开则复原/
+				myCart.onmouseenter = () => {
+					caret.classList.add('caret-rotate')
+					cart.classList.add('open')
+					dropdown.classList.add('open')
+				}
+				myCart.onmouseleave = () => {
+					caret.classList.remove('caret-rotate')
+					cart.classList.remove('open')
+					dropdown.classList.remove('open')
+				}
+			</script>
 	</body>
 </html>
